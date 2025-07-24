@@ -1,4 +1,5 @@
 from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
 
 from declaraciones.models import Cliente
 
@@ -7,5 +8,6 @@ def index(request):
     return HttpResponse("DECLARACIONES")  
 
 def listar_clientes(request):
-    clientes = Cliente.objects.all()
-    return JsonResponse(listar_clientes(clientes), safe=False)
+    clientes = Cliente.objects.all().values()
+    #return JsonResponse(list(clientes), safe=False)
+    return render(request, 'lista_clientes.html', {'clientes': clientes})
