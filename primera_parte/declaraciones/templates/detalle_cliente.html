@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Solicitudes del Cliente</h2>
+  <p><strong>Nombre:</strong> {{ cliente.nombre }} {{ cliente.apellido }}</p>
+  <p><strong>Identificación:</strong> {{ cliente.numeroIdentificacion }}</p>
+  <p><strong>Email:</strong> {{ cliente.email }}</p>
+
+  <h4 class="mt-4">Solicitudes Asociadas</h4>
+  {% if solicitudes %}
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Tipo de Servicio</th>
+          <th>Año Fiscal</th>
+          <th>Fecha de Solicitud</th>
+          <th>Estado</th>
+          <th>Observaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for solicitud in solicitudes %}
+        <tr>
+          <td>{{ solicitud.tipoServicio }}</td>
+          <td>{{ solicitud.añofiscal }}</td>
+          <td>{{ solicitud.fechaSolicitud }}</td>
+          <td>{{ solicitud.estado }}</td>
+          <td>{{ solicitud.observaciones }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No hay solicitudes asociadas a este cliente.</p>
+  {% endif %}
+</div>
+{% endblock %}

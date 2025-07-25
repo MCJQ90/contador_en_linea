@@ -21,7 +21,9 @@
                 <td>{{ cliente.id }}</td>
                 <td>{{ cliente.nombre }}</td>
                 <td>{{ cliente.apellido }}</td>
-                <td>{{ cliente.numeroIdentificacion }}</td>
+                <td>
+                    <a href= "{% url 'detalle_cliente' cliente.numeroIdentificacion %}">{{ cliente.numeroIdentificacion }}</a> 
+                </td>
                 <td>{{ cliente.email }}</td>
                 <td>{{ cliente.telefono }}</td>
             </tr>
