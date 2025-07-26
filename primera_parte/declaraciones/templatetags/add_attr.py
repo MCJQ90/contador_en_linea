@@ -6,6 +6,6 @@ register = template.Library()
 def add_attr(field, attr):
     attrs = {}
     for atribute in attr.split(','):
-        key, value = attribute.split(':')
-        attrs[key] = value()
+        key, value = atribute.split(':')
+        attrs[key] = value
     return field.as_widget(attrs=attrs)

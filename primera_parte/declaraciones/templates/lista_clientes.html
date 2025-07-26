@@ -32,7 +32,10 @@
                 <td colspan="5" class="text-center text-muted">No hay clientes registrados.</td>
             </tr>
             {% endfor %}
+
         </tbody>
     </table>
+
+    <a href="{% url 'formulario_cliente' %}" class="btn btn-primary">Agregar Cliente</a>
 </div>
 {% endblock %}

@@ -2,12 +2,14 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from .forms import ClienteForm
+from django.http import HttpResponseRedirect
 
 from declaraciones.models import Cliente, SolicitudServicio
 
 # Create your views here.
 def index(request):
-    return HttpResponse("DECLARACIONES")  
+    clientes = Cliente.objects.all()
+    return render(request, 'lista_clientes.html', {'clientes': clientes})
 
 def listar_clientes(request):
     clientes = Cliente.objects.all().values()
@@ -23,5 +25,11 @@ def detalle_cliente(request, numero_identificacion):
     })
 
 def formulario_cliente(request):
-    form = ClienteForm()
+    if request.method == 'POST':
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/declaraciones/listar_clientes/")
+    else:
+        form = ClienteForm()
     return render(request, 'formulario_cliente.html', {'form': form})
