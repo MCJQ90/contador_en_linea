@@ -1,0 +1,20 @@
+{% load add_attr bootstrap_label%}
+
+{% for field in form%}
+
+<div class="mb-3">
+    {% bootstrap_label field %}
+    {% if field.errors %}
+    {{ field|add_attr:"class:form-control is-invalid" }}
+    {% else %}
+    {{ field|add_attr:"class:form-control" }}
+    {% endif %}
+    <div class="invalid-feedback">
+        {% for error in field.errors %}
+        {{ error }}
+        {% endfor %}
+    </div>
+    
+</div>
+
+{% endfor %}

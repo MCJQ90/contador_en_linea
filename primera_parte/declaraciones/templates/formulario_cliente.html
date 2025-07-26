@@ -2,8 +2,10 @@
 
 {% block content %}
 
-<form action="">
-    {{ form }}
+<form action="{% url 'formulario_cliente' %}" method="post">
+    {% csrf_token %}
+    {% include "form_snippet.html" with form=form %}
+    <input type="submit" value="Enviar" class="btn btn-primary mt-3">
 <form>
 
 {% endblock %}
