@@ -8,8 +8,8 @@ from declaraciones.models import Cliente, SolicitudServicio
 
 # Create your views here.
 def index(request):
-    clientes = Cliente.objects.all()
-    return render(request, 'lista_clientes.html', {'clientes': clientes})
+    declaraciones = Cliente.objects.all()
+    return render(request, 'index.html', {'declaraciones': declaraciones})
 
 def listar_clientes(request):
     clientes = Cliente.objects.all().values()
